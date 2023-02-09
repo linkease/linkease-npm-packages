@@ -1,7 +1,7 @@
 <template>
     <ul class="navigation-item">
         <div class="navigation-item_icon">
-            <img :src="menu?.icon">
+            <img :src="menu.icon">
         </div>
         <div class="navigation-item_dialog">
             <div class="navigation-item_dialog-content">
@@ -29,7 +29,7 @@
 </template>
 <script >
 export default {
-    name: "NavigationMenuItem",
+    name: "NavigationMenu",
     props: {
         menu: {
             type: Object,
@@ -47,7 +47,7 @@ export default {
                 return
             }
             try {
-                await navigator?.clipboard?.writeText(`${text}`)
+                await navigator.clipboard.writeText(`${text}`)
                 this.msgText = "复制成功"
             } catch (error) {
                 this.msgText = `${error}`

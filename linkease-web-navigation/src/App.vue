@@ -5,7 +5,7 @@
     </div>
 </template>
 <script  >
-import MenuItem from "./MenuItem.vue";
+import MenuItem from "./NavigationMenu.vue";
 export default {
     name: "NavigationMenus",
     props: {

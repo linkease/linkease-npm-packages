@@ -1,13 +1,18 @@
 {
     "name": "linkease-web-navigation",
-    "version": "0.1.2",
+    "version": "0.1.12",
     "private": false,
-    "main": "dist/linkease-web-navigation.umd.js",
+    "main": "lib/linkease-web-navigation.umd.js",
+    "types": "types/index.d.ts",
+    "files": [
+        "lib/**/*",
+        "types/*"
+    ],
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "dev": "vue-cli-service serve",
-        "lib": "vue-cli-service build --target lib"
+        "lib": "vue-cli-service build --dest lib --target lib --name linkease-web-navigation ./src/main.ts"
     },
     "dependencies": {
         "core-js": "^3.8.3",
