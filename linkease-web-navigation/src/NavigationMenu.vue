@@ -1,18 +1,18 @@
 <template>
     <ul class="navigation-item">
         <div class="navigation-item_icon">
-            <img :src="menu.icon">
+            <img lazyload="auto" :src="menu.icon">
         </div>
         <div class="navigation-item_dialog">
             <div class="navigation-item_dialog-content">
                 <div class="navigation-item_dialog-title">{{ menu.title }}</div>
                 <div class="navigation-item_dialog-qrcode" v-if="menu.qrcode">
-                    <img :src="menu.qrcode" alt="">
+                    <img lazyload="auto" :src="menu.qrcode" alt="">
                 </div>
                 <div class="navigation-item_dialog-email" v-if="menu.email">
                     <a :href="`mailto:${menu.email}`" target="_blank">{{ menu.email }}</a>
                     <button class="copy" @click="onHandleCopy(menu.email)">
-                        <img
+                        <img lazyload="auto"
                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAADqADAAQAAAABAAAADgAAAAC98Dn6AAAAnUlEQVQoFWNgQABxIPMLEP8ngD8A5VMZgQQycAZyuJEFsLA9gGLRLECCH4hVoApApoEwOngFFHgMFQTpyQQRl4BYDiqIi/oHlNAC4pswBSCNIE3eQHwcJoiFfgEUkwViFI0gdZ+B+D2IgQOAAgwFMKHwSOCMasQeWB+Bwh9B8QgCJkDMDmZhJ5ADcS9QiTRIGYhBKGGDEoAkSDEMAADqwyVFULQPngAAAABJRU5ErkJggg==">
                     </button>
                 </div>
@@ -60,6 +60,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+* {
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
 ul.navigation-item {
     margin-bottom: 24px;
     position: relative;

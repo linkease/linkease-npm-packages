@@ -30,10 +30,12 @@ export default {
     right: 20px;
     top: 50%;
     padding: 10px 0;
+}
 
-
-
-
-
+* {
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    word-wrap: break-word;
 }
 </style>

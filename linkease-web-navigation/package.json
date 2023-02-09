@@ -1,6 +1,6 @@
 {
     "name": "linkease-web-navigation",
-    "version": "0.1.12",
+    "version": "0.1.14",
     "private": false,
     "main": "lib/linkease-web-navigation.umd.js",
     "types": "types/index.d.ts",

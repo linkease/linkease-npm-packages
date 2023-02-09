@@ -5,3 +5,8 @@
     https://www.npmjs.com/
     email: carseason@linkease.com
     password: linkeaser123!
+
+
+# build
+    npm run lib
+    npm publish
