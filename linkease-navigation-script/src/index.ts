@@ -1,31 +1,33 @@
 import "./index.scss"
-import { IconQQ, IconCopy, IconEmail, IconWechat } from "./assets"
+import { IconQQ, IconCopy, IconEmail, IconWechat, WehctaQrcode, QqQrcode } from "./assets"
 class LinkeaseNavigation implements LinkeaseNavigationNamespace.LinkeaseNavigationClass {
     menus: LinkeaseNavigationNamespace.MenuType[] = []
     node: HTMLDivElement
     static getWehctaQrcode() {
-        return "https://assets.koolcenter.com/linkease/linkease_wechat_qrcode.png"
+        return WehctaQrcode
     }
     static getQqQrcode() {
-        return "https://assets.koolcenter.com/linkease/linkease_qq_qrcode.png"
+        return QqQrcode
     }
-    onHanldeCopy(e: HTMLElement) {
-        const v = e.getAttribute("value")
-        navigator.clipboard.writeText(`${v}`).then(() => {
-            e.parentNode.parentElement.appendChild(this.createNavigatioToast("复制成功"))
-
-        }).catch((error) => {
-            e.parentNode.parentElement.appendChild(this.createNavigatioToast(`${error}`))
-        })
+    onHanldeCopy(e: Element) {
+        if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+            const v = e.getAttribute("value")
+            navigator.clipboard.writeText(`${v}`).then(() => {
+                e.parentNode.parentElement.appendChild(this.createNavigatioToast("复制成功"))
+            }).catch((error) => {
+                e.parentNode.parentElement.appendChild(this.createNavigatioToast(`${error}`))
+            })
+        } else {
+            e.parentNode.parentElement.appendChild(this.createNavigatioToast("当前环境不支持复制"))
+        }
     }
     allButtonOnClick() {
         const btns = this.node.querySelectorAll("ul.navigation-item .navigation-item_dialog-email button.copy")
-        btns.forEach(item => {
-            const e = item as HTMLElement
-            e.onclick = () => {
-                this.onHanldeCopy(e)
-            }
-        })
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", () => {
+                this.onHanldeCopy(btns[i])
+            })
+        }
     }
     createNavigatioToast(value?: string) {
         if (!value) {
@@ -172,4 +174,144 @@ class LinkeaseNavigation implements LinkeaseNavigationNamespace.LinkeaseNavigati
 window.NewLinkeaseNavigation = (obj: LinkeaseNavigationProps) => {
     return new LinkeaseNavigation(obj)
 }
+// 如果有该函,则使用该函数来触发注册事件,避免网络问题
+if (window.initLinkeaseNavigationFunc) {
+    window.initLinkeaseNavigationFunc()
+}
+
+const initLinkeaseNavigation = () => {
+    let menus = []
+    switch (location.host) {
+        case "doc.linkease.com":
+            menus = [
+                {
+                    icon: "qq",
+                    title: "QQ交流群",
+                    qrcode: QqQrcode,
+                    email: "",
+                    text: ""
+                },
+                {
+                    icon: "wechat",
+                    title: "微信交流群",
+                    qrcode: "",
+                    email: "",
+                    text: "请在易有云app或DDNSTO控制台查看"
+                },
+                {
+                    icon: "email",
+                    title: "商务合作邮箱",
+                    qrcode: "",
+                    email: "admin@linkease.com",
+                    text: ""
+                }
+            ]
+            break
+        case "app.linkease.com":
+            menus = [
+                {
+                    icon: "qq",
+                    title: "QQ交流群",
+                    qrcode: QqQrcode,
+                    email: "",
+                    text: ""
+                },
+                {
+                    icon: "wechat",
+                    title: "付费用户微信交流群",
+                    qrcode: "",
+                    email: "",
+                    text: "请在 控制台 - 玩家交流页查看二维码"
+                },
+                {
+                    icon: "email",
+                    title: "商务合作邮箱",
+                    qrcode: "",
+                    email: "admin@linkease.com",
+                    text: ""
+                }
+            ]
+            break
+        case "www.linkease.com":
+            menus = [
+                {
+                    icon: "qq",
+                    title: "QQ交流群",
+                    qrcode: QqQrcode,
+                    email: "",
+                    text: ""
+                },
+                {
+                    icon: "wechat",
+                    title: "付费用户微信交流群",
+                    qrcode: "",
+                    email: "",
+                    text: "请打开易有云APP - “我的” - “联系我们”中查看二维码"
+                },
+                {
+                    icon: "email",
+                    title: "商务合作邮箱",
+                    qrcode: "",
+                    email: "admin@linkease.com",
+                    text: ""
+                }
+            ]
+            break
+        case "www.ddnsto.com":
+        case "www.tocmcc.cn":
+        case "www.kooldns.cn":
+            menus = [
+                {
+                    icon: "qq",
+                    title: "QQ交流群",
+                    qrcode: QqQrcode,
+                    email: "",
+                    text: ""
+                },
+                {
+                    icon: "wechat",
+                    title: "付费用户微信交流群",
+                    qrcode: "",
+                    email: "",
+                    text: "请在 控制台 - 玩家交流页查看二维码"
+                },
+                {
+                    icon: "email",
+                    title: "商务合作邮箱",
+                    qrcode: "",
+                    email: "admin@linkease.com",
+                    text: ""
+                }
+            ]
+            break
+        default:
+            menus = [
+                {
+                    icon: "qq",
+                    title: "QQ交流群",
+                    qrcode: QqQrcode,
+                    email: "",
+                    text: ""
+                },
+                {
+                    icon: "wechat",
+                    title: "微信交流群",
+                    qrcode: "",
+                    email: "",
+                    text: "请在易有云app或DDNSTO控制台查看"
+                },
+                {
+                    icon: "email",
+                    title: "商务合作邮箱",
+                    qrcode: "",
+                    email: "admin@linkease.com",
+                    text: ""
+                }
+            ]
+    }
+    new LinkeaseNavigation({
+        menus: menus
+    })
+}
+initLinkeaseNavigation()
 export default LinkeaseNavigation

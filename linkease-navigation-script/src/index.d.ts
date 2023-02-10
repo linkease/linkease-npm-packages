@@ -26,4 +26,5 @@ declare interface LinkeaseNavigationProps {
 declare interface Window {
     NewLinkeaseNavigation: (obj: LinkeaseNavigationProps) => LinkeaseNavigationNamespace.LinkeaseNavigationClass
     getWindowLinkeaseNavigationMenus?: () => LinkeaseNavigationNamespace.MenuType[]
+    initLinkeaseNavigationFunc?: () => void
 }
