@@ -1,0 +1,156 @@
+.navigation-container[data-v-04bd1545] {
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    * {
+        -webkit-box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        box-sizing: border-box;
+        word-wrap: break-word;
+    }
+}
+.navigation-container[data-v-04bd1545] {
+    background: linear-gradient(232deg, #046bb6, #031a6c 57%, #030b33);
+    border-radius: 56px;
+    position: fixed;
+    z-index: 9999;
+    right: 20px;
+    top: 50%;
+    padding: 10px 0;
+    ul.navigation-item {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 24px;
+        position: relative;
+        padding: 0 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .navigation-item_icon {
+            width: 100%;
+            cursor: pointer;
+
+            img {
+                width: 50px;
+                height: 50px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+            }
+        }
+
+        &:hover {
+            .navigation-item_dialog {
+                display: flex;
+            }
+        }
+
+        .navigation-item_dialog {
+            position: absolute;
+            top: -33px;
+            right: 70px;
+            // background-color: #fff;
+            // box-shadow: 0 0 32px 0 rgb(0 0 0 / 20%);
+            // border-radius: 8px;
+            display: none;
+            // padding: 24px;
+            // min-height: 116px;
+            // width: 256px;
+
+            .navigation-item_dialog-content {
+                background-color: #fff;
+                -webkit-box-shadow: 0 0 32px 0 rgb(0 0 0 / 20%);
+                box-shadow: 0 0 32px 0 rgb(0 0 0 / 20%);
+                border-radius: 8px;
+                display: none;
+                padding: 24px;
+                min-height: 116px;
+                width: 256px;
+                display: block;
+                position: relative;
+
+                .navigation-item_dialog-msg {
+                    width: 100px;
+                    background-color: #00000091;
+                    color: #fff;
+                    text-align: center;
+                    font-size: 16px;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    line-height: 26px;
+                    padding: 4px;
+                }
+            }
+
+            .navigation-item_dialog-transparent {
+                width: 24px;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 46px;
+                    right: 0;
+                    border-left: 24px solid #fff;
+                    border-top: 24px solid transparent;
+                    border-bottom: 24px solid transparent;
+                }
+            }
+
+            .navigation-item_dialog-title {
+                width: 100%;
+                font-size: 22px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #0060ff;
+                line-height: 30px;
+                margin-bottom: 16px;
+            }
+
+            .navigation-item_dialog-qrcode {
+                width: 200px;
+                height: 200px;
+                background: #d8d8d8;
+                border: 1px solid #979797;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .navigation-item_dialog-email {
+                width: 100%;
+
+                a {
+                    font-size: 16px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    color: #000;
+                    line-height: 22px;
+                }
+
+                button.copy {
+                    cursor: pointer;
+                    margin-left: 1rem;
+                    background: none;
+                    padding: 0;
+                    border: none;
+                    vertical-align: bottom;
+                }
+            }
+
+            .navigation-item_dialog-text {
+                font-size: 16px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #000000;
+                line-height: 22px;
+                width: 100%;
+            }
+        }
+    }
+}
