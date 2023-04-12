@@ -17,6 +17,7 @@ export const IconTop = ImageTop
 export const WehctaQrcode = "https://assets.koolcenter.com/linkease/linkease_wechat_qrcode.png"
 // qq 群二维码
 export const QqQrcode = "https://assets.koolcenter.com/linkease/linkease_qq_qrcode.png"
+export const QqIstoreosQrcode = "https://assets.koolcenter.com/istoreos/istoreos-qq-qrcode.png"
 // 客服图标
 import ImageServeUser from "./image/serveUser.png"
 export const IconServeUser = ImageServeUser
