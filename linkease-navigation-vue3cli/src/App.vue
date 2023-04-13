@@ -80,7 +80,6 @@ import {
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
 const getKfData = (): MenuItem => {
-    let description = ""
     let qrcode: string | undefined
     const d = new Date();
     const h = d.getHours()
@@ -105,15 +104,12 @@ const getKfData = (): MenuItem => {
     switch (n) {
         case 0:
             qrcode = WehctaQrcode18002030
-            description = "在线时间：工作日18:00～00:00"
             break
         case 1:
             qrcode = WehctaQrcode08301330
-            description = "在线时间：工作日00:00～13:30"
             break
         case 2:
             qrcode = WehctaQrcode13301800
-            description = "在线时间：工作日13:30～18:00"
             break
 
     }
@@ -121,7 +117,7 @@ const getKfData = (): MenuItem => {
     return {
         icon: "kf",
         title: "在线微信客服",
-        description: description,
+        description: "在线时间：工作日08:30～20:00",
         qrcode: qrcode,
         email: "",
         text: ""
