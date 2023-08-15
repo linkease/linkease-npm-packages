@@ -29,7 +29,7 @@
                                     仅玩家互助交流，<br />无客服及技术人员常驻
                                 </div>
                                 <div class="navigation-item_dialog-qrcode">
-                                    <img lazyload="auto" :src="QQQRCODE" alt="">
+                                    <img lazyload="auto" :src="QqQrcode" alt="">
                                 </div>
                                 <div class="" style="margin-top: 24px;"></div>
                                 <div class="navigation-item_dialog-title">
@@ -39,8 +39,7 @@
                                     最新优惠活动、功能试用第一时间会在微信群发布，有技术人员在群内解答问题
                                 </div>
                                 <div class="navigation-item_dialog-join">
-                                    <a href="https://www.linkease.com/about" target="_blank"
-                                        rel="noopener noreferrer">点击查看加入方式</a>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">点击查看加入方式</a>
                                 </div>
                             </div>
                             <div class="navigation-item_dialog-text" v-else-if="item.text">
@@ -55,69 +54,49 @@
                 </ul>
             </template>
         </div>
-        <div class="navigation-block">
-            <div class="navigation-container navigation_top" v-show="topStatus">
-                <ul class="navigation-item">
-                    <div class="navigation-item_icon" @click="onHandleTop">
-                        <IconVue icon="top" />
-                    </div>
-                </ul>
-            </div>
+        <div class="navigation-container navigation_top">
+            <ul class="navigation-item">
+                <div class="navigation-item_icon" @click="onHandleTop">
+                    <IconVue icon="top" />
+                </div>
+            </ul>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import {
     IconQQ, IconCopy, IconEmail, IconWechat,
     WehctaQrcode,
     WehctaQrcode08301330,
     WehctaQrcode13301800,
     WehctaQrcode18002030,
-    QqQrcode,
-    QqIstoreosQrcode
+    QqQrcode
 } from "./assets"
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
 const getKfData = (): MenuItem => {
-    let qrcode: string | undefined
+    let description = ""
+    let qrcode = null
     const d = new Date();
     const h = d.getHours()
     const m = d.getMinutes()
-    console.log(h, m);
-    let n = 0
     // 0- 13:30
-    if (h < 14) {
-        if (m > 30) {
-            n = 2
-        } else {
-            n = 1
-        }
-
-    } else if (h <= 18) { // 18:30 > && > 13:30
-        if (m > 30) {
-            n = 0
-        } else {
-            n = 2
-        }
-    }
-    switch (n) {
-        case 0:
-            qrcode = WehctaQrcode18002030
-            break
-        case 1:
-            qrcode = WehctaQrcode08301330
-            break
-        case 2:
-            qrcode = WehctaQrcode13301800
-            break
-
+    if (h < 14 && m <= 30) {
+        qrcode = WehctaQrcode08301330
+        description = "在线时间：工作日00:00～13:30"
+    } else if (h <= 18) {
+        qrcode = WehctaQrcode13301800
+        description = "在线时间：工作日13:30～18:00"
+    } else {
+        qrcode = WehctaQrcode18002030
+        description = "在线时间：工作日18:00～00:00"
     }
 
     return {
         icon: "kf",
         title: "在线微信客服",
-        description: "在线时间：工作日08:30～20:00",
+        description: description,
         qrcode: qrcode,
         email: "",
         text: ""
@@ -157,43 +136,13 @@ const onHandleCopy = (v?: string) => {
 
     }
 }
-
 const onHandleTop = () => {
     document.body.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "end",
         inline: "nearest"
     })
 }
-const QQQRCODE = computed(() => {
-    switch (location.host) {
-        case "www.istoreos.com":
-            return QqIstoreosQrcode
-        case "doc.linkease.com":
-            break
-        case "app.linkease.com":
-            break
-        case "www.linkease.com":
-            break
-        case "www.ddnsto.com":
-        case "www.tocmcc.cn":
-        case "www.kooldns.cn":
-            break
-        default:
-    }
-    return QqQrcode
-})
-const topStatus = ref(false)
-const scrollHeigiht = () => {
-    const scroll = document?.documentElement?.scrollTop || document?.body?.scrollTop || 0
-    topStatus.value = scroll > 300
-}
-onMounted(() => {
-    scrollHeigiht()
-    document.addEventListener("scroll", () => {
-        scrollHeigiht()
-    });
-})
 </script>
 <style lang="scss" scoped>
 // 每个元素的大小
@@ -450,11 +399,9 @@ $ItemWidth : 48px;
             line-height: $ItemWidth;
         }
     }
-
-    .navigation-block {
-        height: 48px;
-    }
 }
+
+
 
 @media screen and (max-width: 680px) {
     .navigation-by {
