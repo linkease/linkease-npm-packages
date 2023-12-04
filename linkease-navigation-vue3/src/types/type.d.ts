@@ -1,4 +1,4 @@
-declare type MenusIcon = "qq" | "wechat" | "email" | "top" | "kf"
+declare type MenusIcon = "qq" | "wechat" | "email" | "top" | "kf" | "live"
 declare interface MenuItem {
     icon?: MenusIcon,
     title?: string,

@@ -20,6 +20,9 @@ export const QqQrcode = "https://assets.koolcenter.com/linkease/linkease_qq_qrco
 // 客服图标
 import ImageServeUser from "./image/serveUser.png"
 export const IconServeUser = ImageServeUser
+// 直播图标
+import LiveServeUser from "./image/live.gif"
+export const IconServeLive = LiveServeUser
 // 微信客服
 // （00:00 ~ 13:30显示）
 export const WehctaQrcode08301330 = "https://assets.koolcenter.com/linkease/contact/0830-1330.png"

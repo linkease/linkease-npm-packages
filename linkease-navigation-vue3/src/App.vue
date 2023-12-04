@@ -4,15 +4,15 @@
       <template v-for="item in menus">
         <ul class="navigation-item">
           <div class="navigation-item_icon">
-            <IconVue :icon="item.icon" />
+            <IconVue :icon="(item.icon === 'kf' && url)?'live': item.icon" />
           </div>
           <div class="navigation-item_dialog">
             <div class="navigation-item_dialog-content">
-              <div class="navigation-item_dialog-title" v-if="url">直播间</div>
-              <div class="navigation-item_dialog-description" v-if="url">
+              <div class="navigation-item_dialog-title" v-if="item.icon==='kf' &&url">直播间</div>
+              <div class="navigation-item_dialog-description" v-if="item.icon === 'kf' && url">
                 宝哥正在直播，欢迎新老朋友来直播间互动答疑
               </div>
-              <div class="navigation-item_dialog-join" style="marginBottom:10px" v-if="url">
+              <div class="navigation-item_dialog-join" style="marginBottom:10px" v-if="item.icon === 'kf' && url">
                 <a :href="url" class="link" target="_blank" rel="noopener noreferrer">去观看</a>
               </div>
               <div class="navigation-item_dialog-title">{{ item.title }}</div>
@@ -88,7 +88,7 @@ onMounted(() => {
   axios
     .get("https://assets.koolcenter.com/linkease/live/status.json", {})
     .then((res: any) => {
-      if (res.status === 200 && !res.data.live) {
+      if (res.status === 200 && res.data.live) {
         url.value = res.data.url
       }
     });
