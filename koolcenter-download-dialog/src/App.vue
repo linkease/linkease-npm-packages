@@ -20,6 +20,7 @@
                                 备用地址{{ i + 1 }}
                             </a>
                         </template>
+                        <a target="_blank" rel="noopener noreferrer" :href="getTargetUrl('https://dl.istoreos.com')">CDN加速</a>
                         <a target="_blank" rel="noopener noreferrer" :href="getTargetUrl(mirrors.origin)"
                             v-if="mirrors.origin">原始地址</a>
                     </div>
