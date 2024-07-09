@@ -39,7 +39,8 @@
                                     最新优惠活动、功能试用第一时间会在微信群发布，有技术人员在群内解答问题
                                 </div>
                                 <div class="navigation-item_dialog-join">
-                                    <a href="http://" target="_blank" rel="noopener noreferrer">点击查看加入方式</a>
+                                    <a href="https://www.linkease.com/about/" target="_blank"
+                                        rel="noopener noreferrer">点击查看加入方式</a>
                                 </div>
                             </div>
                             <div class="navigation-item_dialog-text" v-else-if="item.text">
