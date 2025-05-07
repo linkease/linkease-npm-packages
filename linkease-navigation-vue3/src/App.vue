@@ -140,7 +140,7 @@ const onHandleCopy = (v?: string) => {
 const onHandleTop = () => {
     document.body.scrollIntoView({
         behavior: "smooth",
-        block: "end",
+        block: "start",
         inline: "nearest"
     })
 }
