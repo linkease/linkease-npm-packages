@@ -1,4 +1,4 @@
-declare type MenusIcon = "qq" | "wechat" | "email" | "top" | "kf"
+declare type MenusIcon = "qq" | "wechat" | "email" | "top" | "kf" | "feedback"
 declare interface MenuItem {
     icon?: MenusIcon,
     title?: string,
@@ -7,4 +7,8 @@ declare interface MenuItem {
     email?: string,
     text?: string,
     isWechatAndQq?: boolean
+    // 是否有意见反馈
+    isFeedback?: boolean
+    // 意见反馈目标链接
+    feedbackTarget?: string
 }

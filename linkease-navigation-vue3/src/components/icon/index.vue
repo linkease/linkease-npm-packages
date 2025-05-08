@@ -5,7 +5,8 @@
 import { computed } from 'vue';
 import {
     IconQQ, IconCopy, IconEmail, IconWechat,
-    QqQrcode, IconTop, IconServeUser
+    QqQrcode, IconTop, IconServeUser,
+    IconFeedback
 } from "../..//assets"
 const props = defineProps<{
     icon?: MenusIcon
@@ -25,6 +26,8 @@ const imageUrl = computed(() => {
             break
         case "top":
             return IconTop
+        case "feedback":
+            return IconFeedback
     }
 })
 </script>

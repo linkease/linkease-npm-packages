@@ -29,3 +29,7 @@ export const WehctaQrcode13301800 = "https://assets.koolcenter.com/linkease/cont
 export const WehctaQrcode18002030 = "https://assets.koolcenter.com/linkease/contact/1800-2030.png"
 
 
+
+// 反馈图标
+import FeedbackImage from "./image/feedback.png"
+export const IconFeedback: string = FeedbackImage

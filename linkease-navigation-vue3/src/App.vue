@@ -21,7 +21,7 @@
                             <div class="navigation-item_dialog-qrcode" v-else-if="item.qrcode">
                                 <img lazyload="auto" :src="item.qrcode" alt="">
                             </div>
-                            <div class="navigation-item_dialog-wechat" v-if="item.isWechatAndQq">
+                            <div class="navigation-item_dialog-wechat" v-else-if="item.isWechatAndQq">
                                 <div class="navigation-item_dialog-title">
                                     QQ互助交流群
                                 </div>
@@ -46,6 +46,17 @@
                             <div class="navigation-item_dialog-text" v-else-if="item.text">
                                 {{ item.text }}
                             </div>
+                            <div class="navigation-item_dialog-wechat" v-else-if="item.isFeedback">
+                                <div class="navigation-item_dialog-title">
+                                    意见反馈
+                                </div>
+                                <div class="navigation-item_dialog-description">
+                                    有任何对我们产品的问题或建议，欢迎大家来反馈。
+                                </div>
+                                <div class="navigation-item_dialog-join">
+                                    <a :href="item.feedbackTarget" target="_blank" rel="noopener noreferrer">立即反馈</a>
+                                </div>
+                            </div>
                             <div class="navigation-item_dialog-msg" v-show="msg != null">
                                 {{ msg }}
                             </div>
@@ -67,12 +78,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import {
-    IconQQ, IconCopy, IconEmail, IconWechat,
-    WehctaQrcode,
+    IconCopy,
     WehctaQrcode08301330,
     WehctaQrcode13301800,
     WehctaQrcode18002030,
-    QqQrcode
+    QqQrcode,
 } from "./assets"
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
@@ -103,14 +113,26 @@ const getKfData = (): MenuItem => {
         text: ""
     }
 }
-const menus = computed((): MenuItem[] => [
-    {
-        ...getKfData()
-    },
-    {
+
+const getWechatOrFeedback = (): MenuItem => {
+    switch (location.hostname) {
+        case "www.asusgo.com":
+        case "asusgo.com":
+            return {
+                icon: "feedback",
+                isFeedback: true,
+                feedbackTarget: "https://www.linkease.com/rd/asusgo-report/",
+            }
+    }
+    return {
         icon: "wechat",
         isWechatAndQq: true,
-    },
+    }
+}
+
+const menus = computed((): MenuItem[] => [
+    getKfData(),
+    getWechatOrFeedback(),
     {
         icon: "email",
         title: "商务合作邮箱",
