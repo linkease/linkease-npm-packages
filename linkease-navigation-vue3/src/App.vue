@@ -137,7 +137,7 @@ const getWechatOrFeedback = (): MenuItem => {
 
 const menus = computed((): MenuItem[] => [
     {
-        icon: "live",
+        icon: "live", 
         title: "直播连线",
         description: '每周三、五 19:30，宝哥与你相约直播间！',
         liveQrcode: liveQrcode,
