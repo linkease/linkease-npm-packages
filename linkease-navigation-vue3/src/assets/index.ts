@@ -33,3 +33,11 @@ export const WehctaQrcode18002030 = "https://assets.koolcenter.com/linkease/cont
 // 反馈图标
 import FeedbackImage from "./image/feedback.png"
 export const IconFeedback: string = FeedbackImage
+
+// 抖音图标
+import TikTokImage from "./image/tikTok.png"
+export const IconTikTok: string = TikTokImage
+
+// 抖音直播二维码
+import liveImage from "./image/live.png"
+export const liveQrcode: string = liveImage

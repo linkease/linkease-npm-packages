@@ -21,6 +21,9 @@
                             <div class="navigation-item_dialog-qrcode" v-else-if="item.qrcode">
                                 <img lazyload="auto" :src="item.qrcode" alt="">
                             </div>
+                            <div class="live_box" v-else-if="item.liveQrcode">
+                                <img lazyload="auto" :src="item.liveQrcode" alt="">
+                            </div>
                             <div class="navigation-item_dialog-wechat" v-else-if="item.isWechatAndQq">
                                 <div class="navigation-item_dialog-title">
                                     QQ互助交流群
@@ -83,6 +86,8 @@ import {
     WehctaQrcode13301800,
     WehctaQrcode18002030,
     QqQrcode,
+    IconTikTok,
+    liveQrcode
 } from "./assets"
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
@@ -131,6 +136,13 @@ const getWechatOrFeedback = (): MenuItem => {
 }
 
 const menus = computed((): MenuItem[] => [
+    {
+        icon: "live",
+        title: "直播连线",
+        description: '每周三、五 19:30，宝哥与你相约直播间！',
+        liveQrcode: liveQrcode,
+        text: ""
+    },
     getKfData(),
     getWechatOrFeedback(),
     {
@@ -365,6 +377,20 @@ $ItemWidth : 48px;
                         height: 162px;
                         background: #EAEAEA;
                         border-radius: 16px;
+                        margin: 0 auto;
+                    }
+                }
+
+                .live_box {
+                    width: 100%;
+                    text-align: center;
+
+                    img {
+                        display: block;
+                        width: 162px;
+                        height: 162px;
+                        background: #EAEAEA;
+                        border-radius: 4px;
                         margin: 0 auto;
                     }
                 }
