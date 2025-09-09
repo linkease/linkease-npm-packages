@@ -87,7 +87,6 @@ import {
     WehctaQrcode18002030,
     QqQrcode,
     IconTikTok,
-    liveQrcode
 } from "./assets"
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
@@ -137,10 +136,10 @@ const getWechatOrFeedback = (): MenuItem => {
 
 const menus = computed((): MenuItem[] => [
     {
-        icon: "live", 
+        icon: "live",
         title: "直播连线",
         description: '每周三、五 19:30，宝哥与你相约直播间！',
-        liveQrcode: liveQrcode,
+        liveQrcode: "https://assets.koolcenter.com/linkease/live.png",
         text: ""
     },
     getKfData(),

@@ -37,7 +37,3 @@ export const IconFeedback: string = FeedbackImage
 // 抖音图标
 import TikTokImage from "./image/tikTok.png"
 export const IconTikTok: string = TikTokImage
-
-// 抖音直播二维码
-import liveImage from "./image/live.png"
-export const liveQrcode: string = liveImage
