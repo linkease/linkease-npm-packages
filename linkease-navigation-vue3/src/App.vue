@@ -86,7 +86,6 @@ import {
     WehctaQrcode13301800,
     WehctaQrcode18002030,
     QqQrcode,
-    IconTikTok,
 } from "./assets"
 import IconVue from "./components/icon/index.vue"
 const msg = ref<any>(null)
@@ -138,7 +137,7 @@ const menus = computed((): MenuItem[] => [
     {
         icon: "live",
         title: "直播连线",
-        description: '每周三、五 19:30，宝哥与你相约直播间！',
+        description: '每周二、四 19:30，宝哥与你相约直播间！',
         liveQrcode: "https://assets.koolcenter.com/linkease/live.png",
         text: ""
     },
